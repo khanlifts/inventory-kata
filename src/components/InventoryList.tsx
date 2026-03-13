@@ -1,6 +1,9 @@
-import type { InventoryListProps } from "../utilities/interfaces.ts";
+import type { Item } from "../utilities/interfaces.ts";
 
-export default function InventoryList({ items }: InventoryListProps) {
+export default function InventoryList(
+  { items, onIncreaseQuantity }:
+  { items: Item[], onIncreaseQuantity: (id: number) => void }
+) {
   return (
     <div>
       <ul>
@@ -8,6 +11,7 @@ export default function InventoryList({ items }: InventoryListProps) {
           <li key={item.id}>
             <p>{item.name}</p>
             <p>Menge: {item.quantity}</p>
+            <button onClick={() => onIncreaseQuantity(item.id)}>+</button>
           </li>
         ))}
       </ul>

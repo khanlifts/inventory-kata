@@ -9,10 +9,15 @@ function App() {
     { id: 3, name: 'Monitor', quantity: 5 },
     { id: 5, name: 'Chair', quantity: 7 }
   ])
+
+  const increaseQuantity = (id: number) => {
+    setItems(prev => prev.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item))
+  }
+
   return (
     <div>
       <h1>Inventar Liste</h1>
-      <InventoryList items={items}/>
+      <InventoryList items={items} onIncreaseQuantity={increaseQuantity}/>
     </div>
   )
 }
