@@ -21,11 +21,19 @@ function App() {
     setItems(prev => [...prev, { id: newId, name, quantity: 1 }]);
   }
 
+  const deleteItem = (id: number) => {
+    setItems(prev => prev.filter(item => item.id !== id));
+  }
+
   return (
     <div>
       <h1>Inventar Liste</h1>
       <AddItemForm onAddItem={addItem}/>
-      <InventoryList items={items} onIncreaseQuantity={increaseQuantity}/>
+      <InventoryList
+        items={items}
+        onIncreaseQuantity={increaseQuantity}
+        onDeleteItem={deleteItem}
+      />
     </div>
   )
 }

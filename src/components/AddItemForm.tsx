@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function AddItemForm({ onAddItem }: { onAddItem: (name: string) => void }) {
   const [inputValue, setInputValue] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -10,8 +11,14 @@ export default function AddItemForm({ onAddItem }: { onAddItem: (name: string) =
       return;
     }
 
+    if (inputValue.length <= 2) {
+      setError('Item muss mehr als 2 Buchstaben haben!');
+      return;
+    }
+
     onAddItem(inputValue);
     setInputValue('');
+    setError('');
   }
 
   return (
@@ -23,6 +30,7 @@ export default function AddItemForm({ onAddItem }: { onAddItem: (name: string) =
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button>Hinzufügen</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </form>
   )
 }
