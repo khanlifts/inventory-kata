@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "id": 1, "name": "Laptop from DB", "quantity": 3 },
+    { "id": 3, "name": "Monitor", "quantity": 5 },
+    { "id": 5, "name": "Chair", "quantity": 7 }
+  ]
+}
