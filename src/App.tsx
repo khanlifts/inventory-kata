@@ -25,6 +25,10 @@ function App() {
     setItems(prev => prev.filter(item => item.id !== id));
   }
 
+  const editItem = (id: number, newName: string) => {
+    setItems(prev => prev.map(item => item.id === id ? { ...item, name: newName } : item))
+  }
+
   return (
     <div>
       <h1>Inventar Liste</h1>
@@ -33,6 +37,7 @@ function App() {
         items={items}
         onIncreaseQuantity={increaseQuantity}
         onDeleteItem={deleteItem}
+        onEditItem={editItem}
       />
     </div>
   )
